@@ -10,13 +10,26 @@
 </head>
 
 <body>
-  <main class="app-container" data-status="">
-    <section class="search-section">
-      <h1>See the weather in..</h1>
-      <form action="">
-        <input class="search-bar" id="searchBar" type="text" placeholder="Search a city name">
-      </form>
-    </section>
+  <main class="flex-util">
+    <div class="app-container" data-status="">
+      <section class="search-section">
+        <h1>See the weather in..</h1>
+        <form action="">
+          <input class="search-bar" id="searchBar" type="text" placeholder="Search a city name">
+        </form>
+      </section>
+
+      <section class="result-section">
+        <div class="weather-icon-lg">
+          <img src="./assets/images/day.svg" alt="">
+          <h2>45F</h2>
+        </div>
+        <h3>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro, eum.</h3>
+        <!-- weather card large, for todays weather. Should have the current temp
+      icon, wind, and precipitation -->
+        <!-- weather card small. Shows icon and temp for next 5 days.  -->
+      </section>
+    </div>
   </main>
 
   <script src="./assets/main.js"></script>
