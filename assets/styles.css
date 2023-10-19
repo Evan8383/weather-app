@@ -51,15 +51,6 @@ h1 {
   font-weight: lighter;
 }
 
-.search-section {
-  /* background-color: var(--color30);
-  padding: var(--padding10);
-  width: 85%;
-  margin: auto;
-  border-radius: var(--border-radius10);
-  text-align: center; */
-}
-
 .search-bar {
   /* display: block; */
   /* margin: auto; */
@@ -103,5 +94,5 @@ h1 {
   width: 150px;
   border-radius: 50px;
 }
-.weather-icon-lg h2 {
-}
+/* .weather-icon-lg h2 {
+} */
