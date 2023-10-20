@@ -94,9 +94,12 @@ h1 {
 .weather-icon-main h3 {
   font-size: 3em;
   margin: 0;
-  width: 50%;
+  width: 100%;
   padding: var(--padding10);
   /* position: relative;
   right: 105px */
+}
+.weather-icon-main h4{
+  margin-right: 50px
 }
 
