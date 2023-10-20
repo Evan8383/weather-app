@@ -7,6 +7,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="./assets/normalize.css">
   <link rel="stylesheet" href="./assets/styles.css">
+  <script defer src="https://kit.fontawesome.com/2c7527db9f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -20,13 +21,40 @@
       </section>
 
       <section class="result-section">
-        <div class="weather-icon-main flex-util">
-          <h2>Wednesday</h2>
-          <h2>10/24/2023</h2>
+        <div class="weather-card-main flex-util">
+          <h2 class="today-day">Wednesday</h2>
+          <h2 class="today-date">10/24/2023</h2>
           <img class="large-icon" src="./assets/images/rainy-6.svg" alt="">
-          <h3>45<span>&#176;</span></h3>
-          <h4>wind:</h4>
-          <h4>precipitation:</h4>
+          <h3 class="today-temp">45<span>&#176;</span></h3>
+          <div class="today-detail-container flex-util">
+            <h4 class="today-wind"><i class="fa-solid fa-wind"></i> 25 mph</h4>
+            <h4 class="today-humid"><i class="fa-solid fa-percent"></i> 90%</h4>
+          </div>
+          <div class="future-forecast">
+            <h5>5 Day Forecast</h5>
+            <div class="slider" id="slider">
+              <div class="weather-sub-card">
+                <img src="./assets/images/day.svg" alt="">
+                <h6 class="future-temp">50<span>&#176;</span></h6>
+              </div>
+              <div class="weather-sub-card">
+                <img src="./assets/images/day.svg" alt="">
+                <h6 class="future-temp">50<span>&#176;</span></h6>
+              </div>
+              <div class="weather-sub-card">
+                <img src="./assets/images/day.svg" alt="">
+                <h6 class="future-temp">50<span>&#176;</span></h6>
+              </div>
+              <div class="weather-sub-card">
+                <img src="./assets/images/day.svg" alt="">
+                <h6 class="future-temp">50<span>&#176;</span></h6>
+              </div>
+              <div class="weather-sub-card">
+                <img src="./assets/images/day.svg" alt="">
+                <h6 class="future-temp">50<span>&#176;</span></h6>
+              </div>
+            </div>
+          </div>
         </div>
         <!-- weather card large, for todays weather. Should have the current temp
       icon, wind, and precipitation -->
@@ -34,6 +62,7 @@
       </section>
     </div>
   </main>
+
 
   <script src="./assets/main.js"></script>
 </body>
