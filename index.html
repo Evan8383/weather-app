@@ -26,8 +26,8 @@
       <section class="result-section hidden" id="resultSection">
         <div class="weather-card-main flex-util">
           <h2 class="current-city" id="currentCity"></h2>
-          <h2 class="today-day">Wednesday</h2>
-          <h2 class="today-date">10/23/2023</h2>
+          <h2 class="today-day" id="todayDay"></h2>
+          <h2 class="today-date" id="todayDate"></h2>
           <img class="large-icon" id="largeIcon" src="" alt="">
           <h3 class="today-temp" id="todayTemp"></h3>
           <div class="today-detail-container flex-util">
@@ -39,36 +39,38 @@
             <h5>5 Day Forecast</h5>
             <div class="slider" id="slider">
               <div class="weather-sub-card">
+                <p class="future-date"></p>
                 <img src="" alt="">
                 <h6 class="future-temp"><span>&#176;</span></h6>
               </div>
               <div class="weather-sub-card">
+                <p class="future-date"></p>
                 <img src="" alt="">
                 <h6 class="future-temp"><span>&#176;</span></h6>
               </div>
               <div class="weather-sub-card">
+                <p class="future-date"></p>
                 <img src="" alt="">
                 <h6 class="future-temp"><span>&#176;</span></h6>
               </div>
               <div class="weather-sub-card">
+                <p class="future-date"></p>
                 <img src="" alt="">
                 <h6 class="future-temp"><span>&#176;</span></h6>
               </div>
               <div class="weather-sub-card">
+                <p class="future-date"></p>
                 <img src="" alt="">
                 <h6 class="future-temp"><span>&#176;</span></h6>
               </div>
             </div>
           </div>
         </div>
-        <!-- weather card large, for todays weather. Should have the current temp
-      icon, wind, and precipitation -->
-        <!-- weather card small. Shows icon and temp for next 5 days.  -->
       </section>
     </div>
   </main>
 
-
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
   <script src="./assets/main.js"></script>
 </body>
 

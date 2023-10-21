@@ -10,13 +10,22 @@ const largeIcon = document.querySelector("#largeIcon")
 const todayTemp = document.querySelector("#todayTemp")
 const todayWind = document.querySelector("#todayWind")
 const todayHumid = document.querySelector("#todayHumid")
+const todayDate = document.querySelector("#todayDate")
+const todayDay = document.querySelector("#todayDay")
 
+const currentDate = dayjs()
+const getTodayDay = dayjs().format('dddd')
+const getTodayDate = dayjs().format('MM/DD/YYYY')
 
 searchBtn.addEventListener('click', (event) => {
   event.preventDefault()
   loader.classList.remove('hidden')
   const geoUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchBar.value.split(' ').join(',')},&appid=548a7af7dc28b5422813335d1da2e872&units=imperial`
   searchBar.value = ''
+
+  todayDay.textContent = getTodayDay
+  todayDate.textContent = getTodayDate
+
 
   fetch(geoUrl)
     .then(res => res.json())
@@ -40,8 +49,11 @@ searchBtn.addEventListener('click', (event) => {
           console.log(data)
           let fiveDayTemp = []
           let fiveDayIcon = []
+          let fiveDayDate = []
+
           const futureTemp = document.querySelectorAll('.future-temp')
           const futureIcon = document.querySelectorAll('.weather-sub-card img')
+          const futureDate = document.querySelectorAll('.future-date')
           data.list.forEach(item => {
             const daysDate = new Date(item.dt * 1000)
             if (daysDate.getHours() === 11) {
@@ -56,9 +68,17 @@ searchBtn.addEventListener('click', (event) => {
           futureIcon.forEach((icon, i) => {
             icon.setAttribute('src', fiveDayIcon[i])
           })
-
+          for (let i = 0; i < 5; i++) {
+            const nextDate = currentDate.add(i, 'day');
+            fiveDayDate.push(nextDate.format('MM/DD'));
+          }
+          futureDate.forEach((day, i)=>{
+            day.textContent = fiveDayDate[i]
+          })
+          
           loader.classList.add('hidden')
           resultSection.classList.remove('hidden')
+
         })
     })
 })

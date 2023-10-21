@@ -188,7 +188,11 @@ h1 {
   width: 300px;
   padding: var(--padding10)
 }
-
+.future-date{
+  font-weight: bolder;
+  margin: 0;
+  padding: var(--padding10);
+}
 .future-temp {
   margin: 0;
   margin-bottom: 10px;
