@@ -12,47 +12,51 @@
 
 <body>
   <main class="flex-util">
-    <div class="app-container" data-status="">
+    <div class="app-container">
       <section class="search-section">
         <h1>See the weather in..</h1>
-        <form action="" data-status=''>
-          <input class="search-bar" id="searchBar" type="text" placeholder="Search a city name">
+        <form data-status=''>
+          <input type="text" placeholder="Search a city name" class="search-bar" id="searchBar">
+          <button class="search-button hidden" id="searchBtn">Search</button>
         </form>
       </section>
 
-      <section class="result-section" data-status='hidden'>
+      <div class="loader hidden" id="loader"></div>
+
+      <section class="result-section hidden" id="resultSection">
         <div class="weather-card-main flex-util">
-          <h2 class="current-city"></h2>
-          <h2 class="today-day"></h2>
-          <h2 class="today-date"></h2>
-          <img class="large-icon" src="" alt="">
-          <h3 class="today-temp"><span>&#176;</span></h3>
+          <h2 class="current-city" id="currentCity"></h2>
+          <h2 class="today-day">Wednesday</h2>
+          <h2 class="today-date">10/23/2023</h2>
+          <img class="large-icon" id="largeIcon" src="" alt="">
+          <h3 class="today-temp" id="todayTemp"></h3>
           <div class="today-detail-container flex-util">
-            <h4 class="today-wind"><i class="fa-solid fa-wind"></i></h4>
-            <h4 class="today-humid"><i class="fa-solid fa-percent"></i></h4>
+            <h4 class="today-wind" id="todayWind"></h4>
+            <h4 class="today-humid" id="todayHumid"></h4>
           </div>
+
           <div class="future-forecast">
             <h5>5 Day Forecast</h5>
             <div class="slider" id="slider">
               <div class="weather-sub-card">
-                <img src="./assets/images/day.svg" alt="">
-                <h6 class="future-temp">45<span>&#176;</span></h6>
-              </div>
-              <div class="weather-sub-card">
-                <img src="./assets/images/day.svg" alt="">
+                <img src="" alt="">
                 <h6 class="future-temp"><span>&#176;</span></h6>
               </div>
               <div class="weather-sub-card">
-                <img src="./assets/images/day.svg" alt="">
+                <img src="" alt="">
                 <h6 class="future-temp"><span>&#176;</span></h6>
               </div>
               <div class="weather-sub-card">
-                <img src="./assets/images/day.svg" alt="">
+                <img src="" alt="">
                 <h6 class="future-temp"><span>&#176;</span></h6>
               </div>
               <div class="weather-sub-card">
-                <img src="./assets/images/day.svg" alt="">
-                <h6 class="future-temp">45<span>&#176;</span></h6>
+                <img src="" alt="">
+                <h6 class="future-temp"><span>&#176;</span></h6>
+              </div>
+              <div class="weather-sub-card">
+                <img src="" alt="">
+                <h6 class="future-temp"><span>&#176;</span></h6>
               </div>
             </div>
           </div>
