@@ -46,20 +46,26 @@ searchBtn.addEventListener('click', (event) => {
       fetch(coordUrl)
         .then(res => res.json())
         .then(data => {
-          console.log(data)
           let fiveDayTemp = []
           let fiveDayIcon = []
           let fiveDayDate = []
+          let fiveDayWind = []
+          let fiveDayHumid = []
 
           const futureTemp = document.querySelectorAll('.future-temp')
           const futureIcon = document.querySelectorAll('.weather-sub-card img')
           const futureDate = document.querySelectorAll('.future-date')
+          const futureWind = document.querySelectorAll('.future-wind')
+          const futureHumid = document.querySelectorAll('.future-humid')
+
           data.list.forEach(item => {
             const daysDate = new Date(item.dt * 1000)
             if (daysDate.getHours() === 11) {
               fiveDayTemp.push(item.main.temp)
               let fiveDayIconUrl = `https://openweathermap.org/img/wn/${item.weather[0].icon}.png`
               fiveDayIcon.push(fiveDayIconUrl)
+              fiveDayWind.push(item.wind.speed)
+              fiveDayHumid.push(item.main.humidity)
             }
           })
           futureTemp.forEach((temp, i) => {
@@ -69,16 +75,20 @@ searchBtn.addEventListener('click', (event) => {
             icon.setAttribute('src', fiveDayIcon[i])
           })
           for (let i = 0; i < 5; i++) {
-            const nextDate = currentDate.add(i, 'day');
-            fiveDayDate.push(nextDate.format('MM/DD'));
+            const nextDate = currentDate.add(i + 1, 'day');
+            fiveDayDate.push(nextDate.format('ddd MM/DD'));
           }
-          futureDate.forEach((day, i)=>{
+          futureDate.forEach((day, i) => {
             day.textContent = fiveDayDate[i]
           })
-          
+          futureWind.forEach((value, i) => {
+            value.innerHTML = `<i class="fa-solid fa-wind"></i> ${Math.floor(fiveDayWind[i])} mph`
+          })
+          futureHumid.forEach((value, i) => {
+            value.innerHTML = `<i class="fa-solid fa-percent"></i> ${Math.floor(fiveDayHumid[i])}`
+          })
           loader.classList.add('hidden')
           resultSection.classList.remove('hidden')
-
         })
     })
 })

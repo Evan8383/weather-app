@@ -39,6 +39,7 @@ body {
   height: 100vh;
 }
 
+
 main {
   height: 100vh;
   align-content: center;
@@ -159,7 +160,7 @@ h1 {
   box-shadow: var(--card-shadow);
 }
 
-.future-forecast>div {
+.slider {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -167,7 +168,8 @@ h1 {
   padding: var(--padding10);
   border-radius: var(--border-radius50);
   gap: 12px;
-  overflow-x: scroll hidden;
+  cursor: pointer;
+  justify-content: space-between;
 }
 
 .future-forecast h5 {
@@ -176,19 +178,18 @@ h1 {
   font-size: 20px;
 }
 
-.slider>* {
-  cursor: pointer;
-  animation: bounce 1000ms ease-out
+.slider > * {
+  animation: bounce 1000ms ease-out;
 }
 
 .weather-sub-card {
   background-color: var(--color60);
   border-radius: var(--border-radius50);
   box-shadow: var(--card-shadow);
-  width: 300px;
-  padding: var(--padding10)
+  padding: var(--padding10);
 }
 .future-date{
+  width: 100px;
   font-weight: bolder;
   margin: 0;
   padding: var(--padding10);
