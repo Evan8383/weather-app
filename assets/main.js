@@ -24,25 +24,42 @@ searchBtn.addEventListener('click', (event) => {
       let weatherIcon = data.weather[0].icon
       const iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}.png`
       largeIcon.setAttribute('src', iconUrl)
-      
+
       currentCity.textContent = data.name
       todayTemp.innerHTML = `${Math.floor(data.main.temp)} <span>&#176;</span>`
       todayWind.innerHTML = `<i class="fa-solid fa-wind"></i> ${Math.floor(data.wind.speed)}mph`
       todayHumid.innerHTML = `<i class="fa-solid fa-percent"></i> ${Math.floor(data.main.humidity)}`
-      
+
       const lat = data.coord.lat
       const lon = data.coord.lon
       const coordUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&&appid=548a7af7dc28b5422813335d1da2e872&units=imperial`
-      
+
       fetch(coordUrl)
         .then(res => res.json())
         .then(data => {
           console.log(data)
-          
-        })
+          let fiveDayTemp = []
+          let fiveDayIcon = []
+          const futureTemp = document.querySelectorAll('.future-temp')
+          const futureIcon = document.querySelectorAll('.weather-sub-card img')
+          data.list.forEach(item => {
+            const daysDate = new Date(item.dt * 1000)
+            if (daysDate.getHours() === 11) {
+              fiveDayTemp.push(item.main.temp)
+              let fiveDayIconUrl = `https://openweathermap.org/img/wn/${item.weather[0].icon}.png`
+              fiveDayIcon.push(fiveDayIconUrl)
+            }
+          })
+          futureTemp.forEach((temp, i) => {
+            temp.innerHTML = `${Math.floor(fiveDayTemp[i])} <span>&#176;</span>`
+          })
+          futureIcon.forEach((icon, i) => {
+            icon.setAttribute('src', fiveDayIcon[i])
+          })
 
-      loader.classList.add('hidden')
-      resultSection.classList.remove('hidden')
+          loader.classList.add('hidden')
+          resultSection.classList.remove('hidden')
+        })
     })
 })
 
