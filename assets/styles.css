@@ -103,8 +103,10 @@ h1 {
 }
 
 .large-icon {
-  border-radius: 50px;
-  scale: 2 ;
+  border-radius: var(--border-radius50);
+  /* scale: 1.75 ; */
+  /* background-color: var(--color30); */
+  /* box-shadow: var(--card-shadow); */
 }
 
 .weather-card-main .current-city {

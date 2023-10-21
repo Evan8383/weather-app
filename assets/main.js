@@ -31,7 +31,7 @@ searchBtn.addEventListener('click', (event) => {
     .then(res => res.json())
     .then(data => {
       let weatherIcon = data.weather[0].icon
-      const iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}.png`
+      const iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`
       largeIcon.setAttribute('src', iconUrl)
 
       currentCity.textContent = data.name
@@ -41,7 +41,7 @@ searchBtn.addEventListener('click', (event) => {
 
       const lat = data.coord.lat
       const lon = data.coord.lon
-      const coordUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&&appid=548a7af7dc28b5422813335d1da2e872&units=imperial`
+      const coordUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=548a7af7dc28b5422813335d1da2e872&units=imperial`
 
       fetch(coordUrl)
         .then(res => res.json())
