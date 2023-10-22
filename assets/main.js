@@ -1,5 +1,3 @@
-// API key 548a7af7dc28b5422813335d1da2e872
-
 const results = document.querySelector('#results')
 const searchBar = document.querySelector('#searchBar')
 const searchBtn = document.querySelector('#searchBtn')
@@ -75,9 +73,11 @@ function getWeather(url) {
       todayWind.innerHTML = `<i class="fa-solid fa-wind"></i> ${Math.floor(data.wind.speed)}mph`
       todayHumid.innerHTML = `RH: ${Math.floor(data.main.humidity)} <i class="fa-solid fa-percent"></i>`
 
-      addRecentSearch() // adds the appropriate html elements to display the recent search
-      saveLocalStorage() // saves the inner HTML to local storage
-      searchBar.value = ''
+      if (searchBar.value.length > 0) {
+        addRecentSearch() // adds the appropriate html elements to display the recent search
+        saveLocalStorage() // saves the inner HTML to local storage
+        searchBar.value = ''
+      }
 
     })
     .catch((err) => {
