@@ -9,10 +9,10 @@
   --padding10: 10px;
   --padding20: 20px;
   --card-shadow: 0 5px 5px rgba(0, 0, 0, .3);
-  --margin-bottom: 20px
+  --margin-bottom: 10px
 }
 
-.app-container{
+.app-container {
   max-width: 500px;
 }
 
@@ -44,27 +44,40 @@
   visibility: hidden;
   opacity: 0%
 }
-.recent-searches button {
-  margin-bottom: 5px;
-}
+
 .recent-search-list.active {
   opacity: 100%;
   visibility: visible;
+}
+
+.recent-searches button {
+  border: none;
+  padding: var(--padding10);
+  border-radius: var(--border-radius50);
+  background-color: var(--color60);
+  transition: 200ms ease-in;
+}
+.recent-searches button:hover {
+  cursor: pointer;
+  box-shadow: var(--card-shadow);
+  transform: translateY(-3px)
 }
 
 .recent-search-list li {
   border-radius: var(--border-radius50);
   padding: var(--padding5);
   width: 85%;
-  background-color: var(--color60);
+  background-color: #ffffff90;
   cursor: pointer;
   margin: 4px auto;
   transition: 200ms linear;
 }
-.recent-search-list li:hover{
+
+.recent-search-list li:hover {
   background-color: #d5dbe0;
 }
-.recent-search-list li span{
+
+.recent-search-list li span {
   float: right;
 }
 
@@ -140,6 +153,7 @@ h1 {
 
 .weather-card-main {
   margin: auto;
+  margin-top: var(--margin-bottom);
   background-color: var(--color60);
   border-radius: var(--border-radius50);
   width: 80%;

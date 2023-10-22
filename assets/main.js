@@ -13,12 +13,12 @@ const todayHumid = document.querySelector("#todayHumid")
 const todayDate = document.querySelector("#todayDate")
 const todayDay = document.querySelector("#todayDay")
 
+const recentSearchBtn = document.querySelector('#recentSearchBtn')
+const recentSearchList = document.querySelector('#recentSearchList')
+
 const currentDate = dayjs()
 const getTodayDay = dayjs().format('dddd')
 const getTodayDate = dayjs().format('MM/DD/YYYY')
-
-const recentSearchBtn = document.querySelector('#recentSearchBtn')
-const recentSearchList = document.querySelector('#recentSearchList')
 
 let searchedValue
 
@@ -48,7 +48,7 @@ recentSearchList.addEventListener('click', (e) => {
     saveLocalStorage()
   } else {
     loader.classList.remove('hidden')
-    
+
     searchedValue = `https://api.openweathermap.org/data/2.5/weather?q=${e.target.textContent.slice(0, -1)},&appid=548a7af7dc28b5422813335d1da2e872&units=imperial`
     getWeather(searchedValue)
 
