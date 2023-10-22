@@ -26,9 +26,6 @@ searchBtn.addEventListener('click', (event) => {
   event.preventDefault()
 
   searchedValue = `https://api.openweathermap.org/data/2.5/weather?q=${searchBar.value},&appid=548a7af7dc28b5422813335d1da2e872&units=imperial`
-  
-  addRecentSearch() // adds the appropriate html elements to display the recent search
-  saveLocalStorage() // saves the inner HTML to local storage
 
   loader.classList.remove('hidden')
 
@@ -37,7 +34,7 @@ searchBtn.addEventListener('click', (event) => {
 
   getWeather(searchedValue)
   recentSearchList.classList.remove('active')
-  searchBar.value = ''
+  // searchBar.value = ''
   searchedValue = ''
 })
 
@@ -61,31 +58,37 @@ recentSearchBtn.addEventListener('click', toggleSearchMenu)
 function getWeather(url) {
   fetch(url)
     .then((res) => {
-      if (!res.ok){
+      if (!res.ok) {
         throw new Error('Invalid location')
       }
       return res.json()
     })
     .then(data => {
       getFiveDayForecast(data.coord.lat, data.coord.lon)
-      
+
       let weatherIcon = data.weather[0].icon
       const iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`
       largeIcon.setAttribute('src', iconUrl)
-      
+
       currentCity.textContent = data.name
       todayTemp.innerHTML = `${Math.floor(data.main.temp)} <span>&#176;</span>`
       todayWind.innerHTML = `<i class="fa-solid fa-wind"></i> ${Math.floor(data.wind.speed)}mph`
       todayHumid.innerHTML = `RH: ${Math.floor(data.main.humidity)} <i class="fa-solid fa-percent"></i>`
+
+      addRecentSearch() // adds the appropriate html elements to display the recent search
+      saveLocalStorage() // saves the inner HTML to local storage
+      searchBar.value = ''
+
     })
-    .catch((err)=>{
+    .catch((err) => {
       loader.classList.add('hidden')
       const errorMsg = document.querySelector('#errorMsg')
       errorMsg.style.color = 'red'
       errorMsg.textContent = err
-      setInterval(()=>{
+      searchBar.value = ''
+      setInterval(() => {
         errorMsg.textContent = ''
-      }, 3000)
+      }, 1500)
       clearInterval()
       console.error(err)
     })
