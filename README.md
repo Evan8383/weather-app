@@ -18,6 +18,10 @@ To run the Weather App, follow these steps:
 Repo: https://github.com/Evan8383/weather-app
 Live page: https://evan8383.github.io/weather-app/
 
+## Screenshots
+![Screenshot 1](./assets/images/127.0.0.1_5500_index.html%20(1).png)
+![Screenshot 2](./assets/images/127.0.0.1_5500_index.html%20(2).png)
+![Screenshot 3](./assets/images/127.0.0.1_5500_index.html%20(3).png)
 ## Usage
 
 ### Searching for Weather
@@ -59,7 +63,7 @@ The JavaScript file is responsible for handling user interactions and making API
 The Weather App uses the following dependencies:
 
 - [Day.js](https://day.js.org/): A minimalist JavaScript library for handling dates and times.
-- [Font Awesome](https://fontawesome.com/): Icons used for the wind speed icon in the weather display.
+- [Font Awesome](https://fontawesome.com/): Icons used for the wind speed icon and the percentage icon in the weather display.
 
 ## Contributing
 
