@@ -108,11 +108,15 @@ searchBtn.addEventListener('click', (event) => {
         })
     })
 })
+
+recentSearchList.addEventListener('click', (e)=>{
+  if (e.target.nodeName === 'SPAN'){
+    e.target.parentElement.remove()
+  }
+})
+
 const searchHistory = localStorage.getItem('recentSearches')
 recentSearchList.innerHTML = searchHistory
-
-
-
 
 const slider = document.querySelector('#slider');
 let mouseDown = false;
