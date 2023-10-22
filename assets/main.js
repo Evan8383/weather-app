@@ -173,24 +173,33 @@ function renderLocalStorage() {
 }
 
 const slider = document.querySelector('#slider');
-let mouseDown = false;
+let interactionActive = false;
 let startX, scrollLeft;
+
 const startDragging = (e) => {
-  mouseDown = true;
-  startX = e.pageX - slider.offsetLeft;
+  interactionActive = true;
+  startX = (e.type === 'touchstart') ? e.touches[0].pageX : e.pageX - slider.offsetLeft;
   scrollLeft = slider.scrollLeft;
-}
-const stopDragging = (e) => {
-  mouseDown = false;
-}
+};
+
+const stopDragging = () => {
+  interactionActive = false;
+};
+
 const move = (e) => {
   e.preventDefault();
-  if (!mouseDown) { return; }
-  const x = e.pageX - slider.offsetLeft;
+  if (!interactionActive) return;
+  const x = (e.type === 'touchmove') ? e.touches[0].pageX : e.pageX - slider.offsetLeft;
   const scroll = x - startX;
   slider.scrollLeft = scrollLeft - scroll;
-}
-slider.addEventListener('mousemove'||'touchmove', move, false);
-slider.addEventListener('mousedown' || 'touchstart', startDragging, false);
-slider.addEventListener('mouseup' || 'touchend', stopDragging, false);
-slider.addEventListener('mouseleave' || 'touchend', stopDragging, false);
+};
+
+slider.addEventListener('touchstart', startDragging, false);
+slider.addEventListener('touchmove', move, false);
+slider.addEventListener('touchend', stopDragging, false);
+slider.addEventListener('touchleave', stopDragging, false);
+
+slider.addEventListener('mousedown', startDragging, false);
+slider.addEventListener('mousemove', move, false);
+slider.addEventListener('mouseup', stopDragging, false);
+slider.addEventListener('mouseleave', stopDragging, false);
