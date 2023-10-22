@@ -190,7 +190,7 @@ const move = (e) => {
   const scroll = x - startX;
   slider.scrollLeft = scrollLeft - scroll;
 }
-slider.addEventListener('mousemove', move, false);
-slider.addEventListener('mousedown', startDragging, false);
-slider.addEventListener('mouseup', stopDragging, false);
-slider.addEventListener('mouseleave', stopDragging, false);
+slider.addEventListener('mousemove'||'touchmove', move, false);
+slider.addEventListener('mousedown' || 'touchstart', startDragging, false);
+slider.addEventListener('mouseup' || 'touchend', stopDragging, false);
+slider.addEventListener('mouseleave' || 'touchend', stopDragging, false);
