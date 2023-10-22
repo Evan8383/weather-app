@@ -41,7 +41,6 @@ searchBtn.addEventListener('click', (event) => {
   searchedValue = ''
 })
 
-
 recentSearchList.addEventListener('click', (e) => {
   if (e.target.nodeName === 'SPAN') {
     e.target.parentElement.remove()
@@ -61,18 +60,34 @@ recentSearchBtn.addEventListener('click', toggleSearchMenu)
 
 function getWeather(url) {
   fetch(url)
-    .then(res => res.json())
+    .then((res) => {
+      if (!res.ok){
+        throw new Error('Invalid location')
+      }
+      return res.json()
+    })
     .then(data => {
+      getFiveDayForecast(data.coord.lat, data.coord.lon)
+      
       let weatherIcon = data.weather[0].icon
       const iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`
       largeIcon.setAttribute('src', iconUrl)
-
+      
       currentCity.textContent = data.name
       todayTemp.innerHTML = `${Math.floor(data.main.temp)} <span>&#176;</span>`
       todayWind.innerHTML = `<i class="fa-solid fa-wind"></i> ${Math.floor(data.wind.speed)}mph`
       todayHumid.innerHTML = `RH: ${Math.floor(data.main.humidity)} <i class="fa-solid fa-percent"></i>`
-
-      getFiveDayForecast(data.coord.lat, data.coord.lon)
+    })
+    .catch((err)=>{
+      loader.classList.add('hidden')
+      const errorMsg = document.querySelector('#errorMsg')
+      errorMsg.style.color = 'red'
+      errorMsg.textContent = err
+      setInterval(()=>{
+        errorMsg.textContent = ''
+      }, 3000)
+      clearInterval()
+      console.error(err)
     })
 }
 
@@ -153,14 +168,6 @@ function renderLocalStorage() {
   const searchHistory = localStorage.getItem('recentSearches')
   recentSearchList.innerHTML = searchHistory
 }
-
-
-
-
-
-
-
-
 
 const slider = document.querySelector('#slider');
 let mouseDown = false;
