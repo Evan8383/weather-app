@@ -15,8 +15,8 @@ To run the Weather App, follow these steps:
 2. Open the `index.html` file in a web browser to launch the app.
 
 ## Links
-Repo:
-Live page: 
+Repo: https://github.com/Evan8383/weather-app
+Live page: https://evan8383.github.io/weather-app/
 
 ## Usage
 
