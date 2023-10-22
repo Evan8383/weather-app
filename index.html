@@ -19,11 +19,16 @@
           <input type="text" placeholder="Search a city name" class="search-bar" id="searchBar">
           <button class="search-button hidden" id="searchBtn">Search</button>
         </form>
+        <div class="recent-searches">
+          <button id="recentSrchBtn">Recent Searches</button>
+          <ul class="recent-search-list" id="recentSearchList">
+          </ul>
+        </div>
       </section>
 
       <div class="loader hidden" id="loader"></div>
 
-      <section class="result-section" id="resultSection">
+      <section class="result-section hidden" id="resultSection">
         <div class="weather-card-main flex-util">
           <h2 class="current-city" id="currentCity"></h2>
           <h2 class="today-day" id="todayDay"></h2>

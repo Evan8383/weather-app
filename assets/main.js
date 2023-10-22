@@ -17,10 +17,26 @@ const currentDate = dayjs()
 const getTodayDay = dayjs().format('dddd')
 const getTodayDate = dayjs().format('MM/DD/YYYY')
 
+const recentSrchBtn = document.querySelector('#recentSrchBtn')
+const recentSearchList = document.querySelector('#recentSearchList')
+
+let searchedValue
+
 searchBtn.addEventListener('click', (event) => {
   event.preventDefault()
+
+  const createHistoryItem = document.createElement('li')
+  const removeSearchItem = document.createElement('span')
+  removeSearchItem.innerHTML = '\u00d7'
+  
+  createHistoryItem.textContent = searchBar.value.charAt(0).toUpperCase() + searchBar.value.slice(1)
+  recentSearchList.prepend(createHistoryItem)
+  createHistoryItem.appendChild(removeSearchItem)
+
+  localStorage.setItem('recentSearches', recentSearchList.innerHTML)
+
   loader.classList.remove('hidden')
-  const geoUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchBar.value.split(' ').join(',')},&appid=548a7af7dc28b5422813335d1da2e872&units=imperial`
+  const geoUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchBar.value},&appid=548a7af7dc28b5422813335d1da2e872&units=imperial`
   searchBar.value = ''
 
   todayDay.textContent = getTodayDay
@@ -37,7 +53,7 @@ searchBtn.addEventListener('click', (event) => {
       currentCity.textContent = data.name
       todayTemp.innerHTML = `${Math.floor(data.main.temp)} <span>&#176;</span>`
       todayWind.innerHTML = `<i class="fa-solid fa-wind"></i> ${Math.floor(data.wind.speed)}mph`
-      todayHumid.innerHTML = `<i class="fa-solid fa-percent"></i> ${Math.floor(data.main.humidity)}`
+      todayHumid.innerHTML = `RH: ${Math.floor(data.main.humidity)} <i class="fa-solid fa-percent"></i>`
 
       const lat = data.coord.lat
       const lon = data.coord.lon
@@ -85,14 +101,15 @@ searchBtn.addEventListener('click', (event) => {
             value.innerHTML = `<i class="fa-solid fa-wind"></i> ${Math.floor(fiveDayWind[i])} mph`
           })
           futureHumid.forEach((value, i) => {
-            value.innerHTML = `<i class="fa-solid fa-percent"></i> ${Math.floor(fiveDayHumid[i])}`
+            value.innerHTML = `RH: ${Math.floor(fiveDayHumid[i])} <i class="fa-solid fa-percent"></i> `
           })
           loader.classList.add('hidden')
           resultSection.classList.remove('hidden')
         })
     })
 })
-
+const searchHistory = localStorage.getItem('recentSearches')
+recentSearchList.innerHTML = searchHistory
 
 
 
@@ -124,3 +141,7 @@ slider.addEventListener('mousemove', move, false);
 slider.addEventListener('mousedown', startDragging, false);
 slider.addEventListener('mouseup', stopDragging, false);
 slider.addEventListener('mouseleave', stopDragging, false);
+
+recentSrchBtn.addEventListener('click', () => {
+  recentSearchList.classList.toggle('active')
+})

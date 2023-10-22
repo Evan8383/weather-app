@@ -5,12 +5,16 @@
   --color10: #4169e1;
   --border-radius10: 10px;
   --border-radius50: 50px;
+  --padding5: 5px;
   --padding10: 10px;
   --padding20: 20px;
   --card-shadow: 0 5px 5px rgba(0, 0, 0, .3);
   --margin-bottom: 20px
 }
 
+.app-container{
+  max-width: 500px;
+}
 
 .loader {
   width: 48px;
@@ -21,6 +25,47 @@
   display: inline-block;
   box-sizing: border-box;
   animation: loading 1s linear infinite;
+}
+
+.recent-search-list {
+  list-style: none;
+  padding: 0;
+  border-radius: var(--border-radius10);
+  background-color: #4169e1;
+  /* change later */
+  box-shadow: var(--card-shadow);
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 300px;
+  opacity: 100%;
+  transition: 100ms ease-out;
+  visibility: hidden;
+  opacity: 0%
+}
+.recent-searches button {
+  margin-bottom: 5px;
+}
+.recent-search-list.active {
+  opacity: 100%;
+  visibility: visible;
+}
+
+.recent-search-list li {
+  border-radius: var(--border-radius50);
+  padding: var(--padding5);
+  width: 85%;
+  background-color: var(--color60);
+  cursor: pointer;
+  margin: 4px auto;
+  transition: 200ms linear;
+}
+.recent-search-list li:hover{
+  background-color: #d5dbe0;
+}
+.recent-search-list li span{
+  float: right;
 }
 
 .hidden {
@@ -180,7 +225,7 @@ h1 {
   font-size: 20px;
 }
 
-.slider > * {
+.slider>* {
   animation: bounce 1000ms ease-out;
 }
 
@@ -190,12 +235,14 @@ h1 {
   box-shadow: var(--card-shadow);
   padding: var(--padding10);
 }
-.future-date{
+
+.future-date {
   width: 100px;
   font-weight: bolder;
   margin: 0;
   padding: var(--padding10);
 }
+
 .future-temp {
   margin: 0;
   margin-bottom: 10px;
